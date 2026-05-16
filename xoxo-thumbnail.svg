@@ -1,0 +1,151 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="72%" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#ffb47a"/>
+      <stop offset="28%"  stop-color="#d96a8a"/>
+      <stop offset="58%"  stop-color="#6b4a8a"/>
+      <stop offset="100%" stop-color="#1f2440"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="50%" cy="50%" r="70%" gradientUnits="objectBoundingBox">
+      <stop offset="40%" stop-color="#00000000"/>
+      <stop offset="100%" stop-color="#000000aa"/>
+    </radialGradient>
+    <filter id="xoxo-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1.2 0.4 0 0 0.05  0.4 0.1 0 0 0  0 0 0 0 0  0 0 0 2 0"
+        result="colored"/>
+      <feMerge>
+        <feMergeNode in="colored"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="800" height="800" fill="url(#bg)"/>
+
+  <!-- Horizon glow -->
+  <ellipse cx="400" cy="360" rx="340" ry="90" fill="#ffb47a" opacity="0.18"/>
+
+  <!-- ── Skyline silhouette ── -->
+  <g fill="#080814">
+    <!-- far left -->
+    <rect x="0"   y="530" width="55"  height="270"/>
+    <rect x="12"  y="508" width="22"  height="24"/>
+    <!-- tall left -->
+    <rect x="50"  y="390" width="80"  height="410"/>
+    <rect x="76"  y="362" width="16"  height="32"/>
+    <!-- medium left -->
+    <rect x="125" y="468" width="105" height="332"/>
+    <rect x="138" y="446" width="26"  height="26"/>
+    <rect x="176" y="452" width="22"  height="20"/>
+    <!-- center-left wide -->
+    <rect x="225" y="430" width="85"  height="370"/>
+    <rect x="240" y="408" width="28"  height="26"/>
+    <!-- tall center-left -->
+    <rect x="305" y="348" width="62"  height="452"/>
+    <rect x="317" y="318" width="17"  height="34"/>
+    <!-- center cluster -->
+    <rect x="362" y="412" width="48"  height="388"/>
+    <rect x="406" y="378" width="78"  height="422"/>
+    <rect x="418" y="352" width="20"  height="30"/>
+    <!-- tall center-right -->
+    <rect x="479" y="358" width="68"  height="442"/>
+    <rect x="492" y="330" width="16"  height="32"/>
+    <!-- right cluster -->
+    <rect x="542" y="448" width="98"  height="352"/>
+    <rect x="557" y="428" width="22"  height="24"/>
+    <rect x="635" y="402" width="76"  height="398"/>
+    <rect x="648" y="376" width="18"  height="30"/>
+    <!-- far right -->
+    <rect x="706" y="488" width="94"  height="312"/>
+    <rect x="762" y="468" width="38"  height="332"/>
+  </g>
+
+  <!-- ── Windows ── -->
+  <g fill="#f0a840" opacity="0.78">
+    <!-- bldg left (x=0) -->
+    <rect x="7"  y="540" width="7" height="9"/><rect x="22" y="540" width="7" height="9"/><rect x="37" y="540" width="7" height="9"/>
+    <rect x="7"  y="562" width="7" height="9"/><rect x="37" y="562" width="7" height="9"/>
+    <rect x="22" y="584" width="7" height="9"/><rect x="7"  y="606" width="7" height="9"/>
+    <!-- bldg tall-left (x=50) -->
+    <rect x="57" y="400" width="7" height="9"/><rect x="70" y="400" width="7" height="9"/><rect x="83" y="400" width="7" height="9"/>
+    <rect x="57" y="422" width="7" height="9"/><rect x="83" y="422" width="7" height="9"/>
+    <rect x="70" y="444" width="7" height="9"/><rect x="57" y="466" width="7" height="9"/><rect x="83" y="466" width="7" height="9"/>
+    <rect x="57" y="488" width="7" height="9"/><rect x="70" y="488" width="7" height="9"/>
+    <rect x="57" y="510" width="7" height="9"/><rect x="83" y="510" width="7" height="9"/>
+    <!-- bldg medium (x=125) -->
+    <rect x="133" y="478" width="8" height="10"/><rect x="148" y="478" width="8" height="10"/><rect x="163" y="478" width="8" height="10"/><rect x="178" y="478" width="8" height="10"/>
+    <rect x="133" y="500" width="8" height="10"/><rect x="163" y="500" width="8" height="10"/>
+    <rect x="148" y="522" width="8" height="10"/><rect x="178" y="522" width="8" height="10"/>
+    <rect x="133" y="544" width="8" height="10"/><rect x="163" y="544" width="8" height="10"/>
+    <!-- bldg center-left (x=225) -->
+    <rect x="233" y="440" width="8" height="10"/><rect x="248" y="440" width="8" height="10"/><rect x="263" y="440" width="8" height="10"/><rect x="278" y="440" width="8" height="10"/>
+    <rect x="233" y="462" width="8" height="10"/><rect x="263" y="462" width="8" height="10"/>
+    <rect x="248" y="484" width="8" height="10"/><rect x="278" y="484" width="8" height="10"/>
+    <rect x="233" y="506" width="8" height="10"/><rect x="263" y="506" width="8" height="10"/>
+    <!-- bldg tall center-left (x=305) -->
+    <rect x="312" y="358" width="7" height="9"/><rect x="325" y="358" width="7" height="9"/><rect x="338" y="358" width="7" height="9"/>
+    <rect x="312" y="380" width="7" height="9"/><rect x="338" y="380" width="7" height="9"/>
+    <rect x="325" y="402" width="7" height="9"/><rect x="312" y="424" width="7" height="9"/><rect x="338" y="424" width="7" height="9"/>
+    <rect x="312" y="446" width="7" height="9"/><rect x="325" y="446" width="7" height="9"/>
+    <rect x="338" y="468" width="7" height="9"/><rect x="312" y="490" width="7" height="9"/>
+    <!-- center cluster (x=406) -->
+    <rect x="414" y="390" width="8" height="10"/><rect x="428" y="390" width="8" height="10"/><rect x="442" y="390" width="8" height="10"/><rect x="456" y="390" width="8" height="10"/>
+    <rect x="414" y="412" width="8" height="10"/><rect x="442" y="412" width="8" height="10"/>
+    <rect x="428" y="434" width="8" height="10"/><rect x="456" y="434" width="8" height="10"/>
+    <rect x="414" y="456" width="8" height="10"/><rect x="442" y="456" width="8" height="10"/>
+    <!-- tall center-right (x=479) -->
+    <rect x="486" y="368" width="7" height="9"/><rect x="499" y="368" width="7" height="9"/><rect x="512" y="368" width="7" height="9"/>
+    <rect x="486" y="390" width="7" height="9"/><rect x="512" y="390" width="7" height="9"/>
+    <rect x="499" y="412" width="7" height="9"/><rect x="486" y="434" width="7" height="9"/><rect x="512" y="434" width="7" height="9"/>
+    <rect x="486" y="456" width="7" height="9"/><rect x="499" y="456" width="7" height="9"/>
+    <rect x="512" y="478" width="7" height="9"/><rect x="486" y="500" width="7" height="9"/>
+    <!-- right (x=542) -->
+    <rect x="550" y="458" width="8" height="10"/><rect x="565" y="458" width="8" height="10"/><rect x="580" y="458" width="8" height="10"/><rect x="595" y="458" width="8" height="10"/>
+    <rect x="550" y="480" width="8" height="10"/><rect x="580" y="480" width="8" height="10"/>
+    <rect x="565" y="502" width="8" height="10"/><rect x="595" y="502" width="8" height="10"/>
+    <!-- right-tall (x=635) -->
+    <rect x="643" y="412" width="7" height="9"/><rect x="656" y="412" width="7" height="9"/><rect x="669" y="412" width="7" height="9"/>
+    <rect x="643" y="434" width="7" height="9"/><rect x="669" y="434" width="7" height="9"/>
+    <rect x="656" y="456" width="7" height="9"/><rect x="643" y="478" width="7" height="9"/>
+    <!-- far right (x=706) -->
+    <rect x="714" y="498" width="7" height="9"/><rect x="727" y="498" width="7" height="9"/><rect x="740" y="498" width="7" height="9"/>
+    <rect x="714" y="520" width="7" height="9"/><rect x="740" y="520" width="7" height="9"/>
+    <rect x="727" y="542" width="7" height="9"/>
+    <!-- far right (x=762) -->
+    <rect x="768" y="478" width="6" height="8"/><rect x="780" y="478" width="6" height="8"/>
+    <rect x="768" y="498" width="6" height="8"/><rect x="780" y="498" width="6" height="8"/>
+  </g>
+
+  <!-- ── xoxo text ── -->
+  <text
+    x="400" y="248"
+    text-anchor="middle"
+    font-family="'Brush Script MT','Palatino Linotype',Georgia,cursive"
+    font-size="210"
+    font-weight="700"
+    fill="white"
+    transform="rotate(-4,400,248)"
+    filter="url(#xoxo-glow)">xoxo</text>
+
+  <!-- ── GOSSIP GIRL subtitle ── -->
+  <text
+    x="400" y="308"
+    text-anchor="middle"
+    font-family="'Helvetica Neue',Arial,sans-serif"
+    font-size="26"
+    font-weight="300"
+    letter-spacing="11"
+    fill="#f6e7b9"
+    opacity="0.92">G O S S I P   G I R L</text>
+
+  <!-- ── Play button ── -->
+  <circle cx="400" cy="400" r="38" fill="#000000" fill-opacity="0.38"
+    stroke="white" stroke-opacity="0.55" stroke-width="2"/>
+  <polygon points="394,384 394,416 422,400" fill="white" opacity="0.92"/>
+
+  <!-- ── Vignette ── -->
+  <rect width="800" height="800" fill="url(#vig)"/>
+</svg>
