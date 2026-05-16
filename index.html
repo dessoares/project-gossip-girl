@@ -114,6 +114,8 @@
     overflow: hidden;
   }
   .post-photo img { width: 100%; height: auto; display: block; }
+  .post-photo.poster { max-height: 320px; overflow: hidden; }
+  .post-photo.poster img { width: 100%; height: 320px; object-fit: cover; object-position: top; }
 
   /* Slot de mídia */
   .photo {
@@ -264,7 +266,7 @@
   /* ── Nav lateral fixa ── */
   .avatars {
     position: fixed;
-    right: 12px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 999;
@@ -288,7 +290,7 @@
     .card .sig  { font-size: 11px; margin-top: 6px; }
     .photo .placeholder { font-size: 11px; }
     .photo .play-icon svg { width: 44px; height: 44px; }
-    .avatars { gap: 14px; right: 20px; }
+    .avatars { gap: 14px; right: 28px; }
     .avatar .circle { width: 70px; height: 70px; }
     .avatar .label  { font-size: 12px; margin-top: 4px; }
     .avatar:hover .circle {
@@ -369,7 +371,7 @@
         <h2 class="c-parties">parties</h2>
         <p>Seu convite deve ter<br>
           se perdido no correio!<br>
-          <a href="#">CLIQUE AQUI</a> para ver<br>
+          <a href="#section-parties">CLIQUE AQUI</a> para ver<br>
           o que você perdeu.</p>
 
         <h2 class="c-links">links</h2>
@@ -459,9 +461,9 @@
         </article>
 
         <!-- Party: Spider-Man -->
-        <article class="card">
+        <article class="card" id="section-parties">
           <h3>Dois Ingressos. Uma Cadeira Vazia.</h3>
-          <div class="post-photo">
+          <div class="post-photo poster">
             <img src="Spider-Man_Brand_New_Day_poster.jpg" alt="Homem-Aranha: Um Novo Dia"/>
           </div>
           <p class="body">
