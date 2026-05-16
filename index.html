@@ -28,12 +28,12 @@
     background: radial-gradient(ellipse at 50% 60%, #0c0e16 0%, #050608 55%, #000 100%);
     overflow: hidden;
   }
-  .bokeh  { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .bokeh  { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
   .city   { position: absolute; inset: 0; filter: blur(5px); mix-blend-mode: screen; opacity: 0.95; }
   .window { position: absolute; background: #ffcc78; border-radius: 1px; }
   .dot    { position: absolute; border-radius: 50%; mix-blend-mode: screen; }
   .vignette {
-    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
     background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 75%, #000 100%);
   }
 
