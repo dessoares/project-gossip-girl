@@ -723,21 +723,15 @@
     </span>
     <span class="label">home</span>
   </a>
-  <a class="avatar" href="index.html">
+  <a class="avatar" href="#" id="open-parties-circle">
     <span class="circle">
       <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <rect x="7" y="2" width="13" height="20" rx="1.5"/>
-        <line x1="7" y1="2" x2="7" y2="22"/>
-        <circle cx="5" cy="7" r="1.6"/>
-        <circle cx="5" cy="12" r="1.6"/>
-        <circle cx="5" cy="17" r="1.6"/>
-        <line x1="10" y1="7" x2="18" y2="7"/>
-        <line x1="10" y1="11" x2="18" y2="11"/>
-        <line x1="10" y1="15" x2="18" y2="15"/>
-        <line x1="10" y1="19" x2="16" y2="19"/>
+        <path d="M12 2l1.5 4.5H18l-3.75 2.7 1.5 4.5L12 11.1l-3.75 2.6 1.5-4.5L6 6.5h4.5z"/>
+        <path d="M5 17c1.5-1 3.5-1.5 7-1.5s5.5.5 7 1.5"/>
+        <line x1="12" y1="13" x2="12" y2="22"/>
       </svg>
     </span>
-    <span class="label">posts</span>
+    <span class="label">parties</span>
   </a>
   <a class="avatar" href="#" id="open-gallery-circle">
     <span class="circle">
@@ -871,6 +865,7 @@
   function closeParties() { partiesModal.classList.remove('open'); document.body.classList.remove('modal-open'); document.body.style.overflow = ''; }
   document.getElementById('open-parties').addEventListener('click', openParties);
   document.getElementById('open-parties-link').addEventListener('click', openParties);
+  document.getElementById('open-parties-circle').addEventListener('click', openParties);
   document.getElementById('parties-close').addEventListener('click', closeParties);
 
   document.getElementById('open-gallery').addEventListener('click', openGallery);
