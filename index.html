@@ -141,10 +141,10 @@
   }
   .lightbox.open { display: flex; }
   .lightbox-inner {
-    position: relative; width: 100%; max-width: 600px; aspect-ratio: 1 / 1;
+    position: relative; width: 100%; max-width: 600px; aspect-ratio: 9 / 16;
   }
-  .lightbox-inner video, .lightbox-inner img {
-    width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 2px;
+  .lightbox-inner iframe {
+    width: 100%; height: 100%; border: none; border-radius: 2px; display: block;
   }
   .lightbox-close {
     position: absolute; top: -40px; right: 0;
@@ -197,13 +197,7 @@
 <div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
     <button class="lightbox-close" id="lb-close" aria-label="Fechar">&#x2715;</button>
-    <video id="lb-video" autoplay loop muted playsinline style="display:none"></video>
-    <img   id="lb-img"   src="" alt=""          style="display:none" />
-    <div id="lb-placeholder" style="
-      width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-      color:#555;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-family:Quicksand,sans-serif;
-      background:repeating-linear-gradient(45deg,#1a1a1a,#1a1a1a 8px,#1f1f1f 8px,#1f1f1f 16px);
-      border-radius:2px;">seu vídeo aqui</div>
+    <iframe id="lb-iframe" src="" allowfullscreen allow="autoplay"></iframe>
   </div>
 </div>
 
@@ -255,10 +249,7 @@
             Ou substitua o <video> por <img src="sua-foto.jpg" />
           -->
           <div class="photo" id="photo-thumb">
-            <video autoplay loop muted playsinline id="thumb-video">
-              <!-- <source src="seu-video.mp4" type="video/mp4" /> -->
-            </video>
-            <div class="placeholder">seu vídeo aqui</div>
+            <div class="placeholder"></div>
             <div class="play-icon">
               <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="11" fill="none" stroke="white" stroke-width="1.5" opacity="0.6"/>
@@ -363,40 +354,24 @@
     bokeh.appendChild(d);
   }
 
-  /* ── Lightbox ── */
-  const lightbox   = document.getElementById('lightbox');
-  const lbClose    = document.getElementById('lb-close');
-  const lbVideo    = document.getElementById('lb-video');
-  const lbImg      = document.getElementById('lb-img');
-  const lbPh       = document.getElementById('lb-placeholder');
-  const thumb      = document.getElementById('photo-thumb');
-  const thumbVideo = document.getElementById('thumb-video');
+  /* ── Lightbox com Google Drive ── */
+  const DRIVE_ID  = '113ojlnCMpNSS1oEMKMiz6Iv0j5cP1g5i';
+  const EMBED_URL = `https://drive.google.com/file/d/${DRIVE_ID}/preview`;
+
+  const lightbox = document.getElementById('lightbox');
+  const lbClose  = document.getElementById('lb-close');
+  const lbIframe = document.getElementById('lb-iframe');
+  const thumb    = document.getElementById('photo-thumb');
 
   function openLightbox() {
-    const thumbImg = thumb.querySelector('img');
-    const src = thumbVideo.querySelector('source[src]');
-
-    lbVideo.style.display = 'none';
-    lbImg.style.display   = 'none';
-    lbPh.style.display    = 'none';
-
-    if (src) {
-      lbVideo.innerHTML = `<source src="${src.getAttribute('src')}" type="${src.getAttribute('type') || 'video/mp4'}">`;
-      lbVideo.style.display = 'block';
-      lbVideo.load(); lbVideo.play();
-    } else if (thumbImg) {
-      lbImg.src = thumbImg.src;
-      lbImg.style.display = 'block';
-    } else {
-      lbPh.style.display = 'flex';
-    }
+    lbIframe.src = EMBED_URL;
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeLightbox() {
     lightbox.classList.remove('open');
-    lbVideo.pause();
+    lbIframe.src = '';
     document.body.style.overflow = '';
   }
 
@@ -404,16 +379,6 @@
   lbClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
-
-  /* Esconde placeholder do thumb quando o vídeo carrega */
-  thumbVideo.addEventListener('loadeddata', function () {
-    const ph = thumb.querySelector('.placeholder');
-    if (ph) ph.remove();
-  });
-  if (thumbVideo.querySelector('source[src]')) {
-    const ph = thumb.querySelector('.placeholder');
-    if (ph) ph.remove();
-  }
 })();
 </script>
 </body>
