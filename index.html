@@ -61,7 +61,7 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 100px 1fr 72px;
+    grid-template-columns: 100px 1fr;
     gap: 14px;
     align-items: start;
   }
@@ -201,16 +201,6 @@
     display: flex; align-items: center; justify-content: center;
   }
 
-  /* Avatares flutuantes quando galeria está aberta */
-  body.gallery-open .avatars {
-    position: fixed;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1001;
-    gap: 14px;
-  }
-
   /* ── Lightbox: iframe em tela cheia real ── */
   .lightbox {
     display: none;
@@ -268,11 +258,24 @@
   }
   .avatar .label { display: block; color: #cfcfcf; font-size: 10px; margin-top: 4px; }
 
+  /* ── Nav lateral fixa ── */
+  .avatars {
+    position: fixed;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
   /* ── Desktop (900px+) ── */
   @media (min-width: 900px) {
     .wrap  { padding: 32px 40px 80px; }
     .logo  { font-size: clamp(72px, 11vw, 150px); letter-spacing: -3px; margin-bottom: 24px; }
-    .grid  { grid-template-columns: 200px 1fr 130px; gap: 56px; }
+    .grid  { grid-template-columns: 200px 1fr; gap: 56px; }
     .menu  { font-size: 12px; }
     .menu h2 { font-size: 32px; letter-spacing: -1px; margin-bottom: 4px; }
     .menu p  { font-size: 12px; margin-bottom: 28px; }
@@ -282,7 +285,7 @@
     .card .sig  { font-size: 11px; margin-top: 6px; }
     .photo .placeholder { font-size: 11px; }
     .photo .play-icon svg { width: 44px; height: 44px; }
-    .avatars { gap: 14px; }
+    .avatars { gap: 14px; right: 20px; }
     .avatar .circle { width: 70px; height: 70px; }
     .avatar .label  { font-size: 12px; margin-top: 4px; }
     .avatar:hover .circle {
@@ -615,59 +618,59 @@
 
       </div>
 
-      <!-- Círculos direita -->
-      <aside class="avatars">
-        <a class="avatar" href="index.html">
-          <span class="circle">
-            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <polyline points="3,11 12,3 21,11"/>
-              <path d="M5 10v10h4v-5h6v5h4V10"/>
-            </svg>
-          </span>
-          <span class="label">home</span>
-        </a>
-        <a class="avatar" href="index.html">
-          <span class="circle">
-            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <rect x="7" y="2" width="13" height="20" rx="1.5"/>
-              <line x1="7" y1="2" x2="7" y2="22"/>
-              <circle cx="5" cy="7" r="1.6"/>
-              <circle cx="5" cy="12" r="1.6"/>
-              <circle cx="5" cy="17" r="1.6"/>
-              <line x1="10" y1="7" x2="18" y2="7"/>
-              <line x1="10" y1="11" x2="18" y2="11"/>
-              <line x1="10" y1="15" x2="18" y2="15"/>
-              <line x1="10" y1="19" x2="16" y2="19"/>
-            </svg>
-          </span>
-          <span class="label">posts</span>
-        </a>
-        <a class="avatar" href="#" id="open-gallery-circle">
-          <span class="circle">
-            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="7" width="20" height="14" rx="2"/>
-              <path d="M8 7V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/>
-              <circle cx="12" cy="14" r="4"/>
-              <circle cx="12" cy="14" r="1.8"/>
-              <circle cx="18.5" cy="10" r="1"/>
-            </svg>
-          </span>
-          <span class="label">pics</span>
-        </a>
-        <a class="avatar" href="#">
-          <span class="circle">
-            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 13a5 5 0 0 0 7.54.54l2-2a5 5 0 0 0-7.07-7.07l-1.15 1.15"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-2 2a5 5 0 0 0 7.07 7.07l1.15-1.15"/>
-            </svg>
-          </span>
-          <span class="label">links</span>
-        </a>
-      </aside>
-
     </div>
   </div>
 </div>
+
+<!-- Nav lateral fixa (fora do .stage para não ser cortada pelo overflow:hidden) -->
+<aside class="avatars">
+  <a class="avatar" href="index.html">
+    <span class="circle">
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="3,11 12,3 21,11"/>
+        <path d="M5 10v10h4v-5h6v5h4V10"/>
+      </svg>
+    </span>
+    <span class="label">home</span>
+  </a>
+  <a class="avatar" href="index.html">
+    <span class="circle">
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <rect x="7" y="2" width="13" height="20" rx="1.5"/>
+        <line x1="7" y1="2" x2="7" y2="22"/>
+        <circle cx="5" cy="7" r="1.6"/>
+        <circle cx="5" cy="12" r="1.6"/>
+        <circle cx="5" cy="17" r="1.6"/>
+        <line x1="10" y1="7" x2="18" y2="7"/>
+        <line x1="10" y1="11" x2="18" y2="11"/>
+        <line x1="10" y1="15" x2="18" y2="15"/>
+        <line x1="10" y1="19" x2="16" y2="19"/>
+      </svg>
+    </span>
+    <span class="label">posts</span>
+  </a>
+  <a class="avatar" href="#" id="open-gallery-circle">
+    <span class="circle">
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="7" width="20" height="14" rx="2"/>
+        <path d="M8 7V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/>
+        <circle cx="12" cy="14" r="4"/>
+        <circle cx="12" cy="14" r="1.8"/>
+        <circle cx="18.5" cy="10" r="1"/>
+      </svg>
+    </span>
+    <span class="label">pics</span>
+  </a>
+  <a class="avatar" href="#">
+    <span class="circle">
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 13a5 5 0 0 0 7.54.54l2-2a5 5 0 0 0-7.07-7.07l-1.15 1.15"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-2 2a5 5 0 0 0 7.07 7.07l1.15-1.15"/>
+      </svg>
+    </span>
+    <span class="label">links</span>
+  </a>
+</aside>
 
 <script>
 (function () {
