@@ -59,12 +59,16 @@
     text-shadow: 0 0 14px rgba(246,231,185,0.35), 0 0 32px rgba(246,231,185,0.18);
     margin-bottom: 18px;
     user-select: none;
+    /* compensates for asymmetric wrap padding (16px left / 88px right) so title stays centered */
+    margin-left: -16px;
+    margin-right: -88px;
+    width: calc(100% + 16px + 88px);
   }
 
   .grid {
     display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 14px;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
     align-items: start;
   }
 
@@ -142,7 +146,7 @@
     position: absolute; inset: 0; display: flex;
     align-items: center; justify-content: center; pointer-events: none;
   }
-  .photo .play-icon svg { width: 32px; height: 32px; opacity: 0.6; filter: drop-shadow(0 2px 4px #000); }
+  .photo .play-icon svg { width: 48px; height: 48px; opacity: 0.75; filter: drop-shadow(0 2px 8px #000); }
 
   .card .body { font-size: 9.5px; line-height: 1.55; color: #2a2a2a; }
   .card .sig  { color: #29b6e6; font-weight: 700; text-align: right; margin-top: 6px; font-size: 9.5px; letter-spacing: 0.4px; }
@@ -335,7 +339,7 @@
   /* ── Desktop (900px+) ── */
   @media (min-width: 900px) {
     .wrap  { padding: 32px 40px 80px; }
-    .logo  { font-size: clamp(72px, 11vw, 150px); letter-spacing: -3px; margin-bottom: 24px; }
+    .logo  { font-size: clamp(72px, 11vw, 150px); letter-spacing: -3px; margin-bottom: 24px; margin-left: 0; margin-right: 0; width: 100%; }
     .grid  { grid-template-columns: 200px 1fr; gap: 56px; }
     .menu  { font-size: 12px; }
     .menu h2 { font-size: 32px; letter-spacing: -1px; margin-bottom: 4px; }
@@ -448,10 +452,8 @@
             Ou substitua o <video> por <img src="sua-foto.jpg" />
           -->
           <div class="photo" id="photo-thumb">
-            <img src="xoxo-thumbnail.svg" alt="xoxo gossip girl"
-              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
             <div class="play-icon">
-              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="11" fill="none" stroke="white" stroke-width="1.5" opacity="0.6"/>
                 <polygon points="10,8 17,12 10,16" fill="white"/>
               </svg>
