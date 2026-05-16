@@ -40,13 +40,13 @@
     background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 75%, #000 100%);
   }
 
-  /* ── Layout mobile-first ── */
+  /* ── Layout (3 colunas em qualquer tela) ── */
   .wrap {
     position: relative;
     z-index: 2;
     max-width: 1180px;
     margin: 0 auto;
-    padding: 16px 14px 90px; /* padding-bottom para não esconder atrás da bottom nav */
+    padding: 20px 16px 50px;
   }
 
   .logo {
@@ -58,17 +58,19 @@
     letter-spacing: -2px;
     line-height: 0.95;
     text-shadow: 0 0 14px rgba(246,231,185,0.35), 0 0 32px rgba(246,231,185,0.18);
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     user-select: none;
   }
 
-  /* Mobile: coluna única, menu oculto */
   .grid {
-    display: block;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 14px;
+    align-items: start;
   }
-  .menu { display: none; } /* menu lateral oculto no mobile */
 
   /* ── Menu esquerda ── */
+  .menu { padding-top: 4px; font-size: 10px; line-height: 1.5; }
   .menu h2 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
@@ -87,7 +89,7 @@
   .c-links   { color: #82b746; }
 
   /* ── Card central ── */
-  .card-wrap { display: flex; flex-direction: column; gap: 10px; }
+  .card-wrap { display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
   .card {
     background: #f4f1e7;
     color: #222;
@@ -98,70 +100,10 @@
   }
   .card h3 {
     font-weight: 700;
-    font-size: 11px;
+    font-size: 10px;
     text-align: center;
     margin-bottom: 7px;
     color: #1a1a1a;
-  }
-  .card .body { font-size: 11px; line-height: 1.55; color: #2a2a2a; }
-  .card .sig  { color: #29b6e6; font-weight: 700; text-align: right; margin-top: 6px; font-size: 10px; letter-spacing: 0.4px; }
-
-  /* ── Nav: bottom bar no mobile ── */
-  .avatars {
-    position: fixed;
-    bottom: 0; left: 0; right: 0; top: auto;
-    transform: none;
-    z-index: 999;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 8px 8px 14px;
-    background: rgba(5,6,8,0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255,255,255,0.07);
-    gap: 0;
-    transition: opacity 200ms;
-  }
-  .avatar .circle { width: 46px; height: 46px; }
-  .avatar .label  { font-size: 9px; margin-top: 3px; }
-  body.modal-open .avatars { opacity: 0; pointer-events: none; }
-
-  /* ── Desktop (900px+) ── */
-  @media (min-width: 900px) {
-    .wrap  { padding: 32px 40px 80px; }
-    .logo  { font-size: clamp(72px, 11vw, 150px); letter-spacing: -3px; margin-bottom: 24px; }
-    .grid  { display: grid; grid-template-columns: 200px 1fr; gap: 56px; align-items: start; }
-    .menu  { display: block; padding-top: 4px; font-size: 12px; line-height: 1.5; }
-    .menu h2 { font-size: 32px; letter-spacing: -1px; margin-bottom: 4px; }
-    .menu p  { font-size: 12px; margin-bottom: 28px; }
-    .card  { padding: 14px; }
-    .card h3   { font-size: 14px; margin-bottom: 9px; }
-    .card .body { font-size: 11px; }
-    .card .sig  { font-size: 11px; margin-top: 6px; }
-    .photo .play-icon svg { width: 44px; height: 44px; }
-    /* nav lateral no desktop */
-    .avatars {
-      position: fixed;
-      bottom: auto; left: auto;
-      right: 28px; top: 50%;
-      transform: translateY(-50%);
-      flex-direction: column;
-      justify-content: center;
-      padding: 0;
-      background: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border-top: none;
-      gap: 14px;
-    }
-    .avatar .circle { width: 70px; height: 70px; }
-    .avatar .label  { font-size: 12px; margin-top: 4px; }
-    .avatar:hover .circle {
-      transform: scale(1.06);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 8px 24px rgba(0,0,0,0.7);
-    }
   }
 
   /* Foto menor nos posts secundários */
@@ -202,6 +144,8 @@
   }
   .photo .play-icon svg { width: 32px; height: 32px; opacity: 0.6; filter: drop-shadow(0 2px 4px #000); }
 
+  .card .body { font-size: 9.5px; line-height: 1.55; color: #2a2a2a; }
+  .card .sig  { color: #29b6e6; font-weight: 700; text-align: right; margin-top: 6px; font-size: 9.5px; letter-spacing: 0.4px; }
 
   /* ── Galeria de fotos ── */
   .gallery-modal {
@@ -372,6 +316,21 @@
     flex-shrink: 0;
   }
   .avatar .label { display: block; color: #cfcfcf; font-size: 10px; margin-top: 4px; }
+
+  /* ── Nav lateral fixa ── */
+  .avatars {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: opacity 200ms;
+  }
+  body.modal-open .avatars { opacity: 0; pointer-events: none; }
 
   /* ── Desktop (900px+) ── */
   @media (min-width: 900px) {
