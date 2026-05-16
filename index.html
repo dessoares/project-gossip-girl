@@ -333,7 +333,7 @@
     backdrop-filter: blur(6px);
     transition: opacity 200ms, transform 200ms;
   }
-  body.modal-open .avatars { opacity: 0; pointer-events: none; transform: translateY(20px); }
+  body.modal-open .avatars { opacity: 1; pointer-events: auto; }
 
   /* ── Desktop (900px+) ── */
   @media (min-width: 900px) {
@@ -360,7 +360,7 @@
       backdrop-filter: none;
       justify-content: center;
     }
-    body.modal-open .avatars { transform: translateY(-50%); opacity: 0; }
+    body.modal-open .avatars { transform: translateY(-50%); opacity: 1; pointer-events: auto; }
     .avatar .circle { width: 70px; height: 70px; }
     .avatar .circle svg.icon { width: 60%; height: 60%; }
     .avatar .label  { font-size: 12px; margin-top: 4px; }
