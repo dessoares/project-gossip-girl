@@ -20,7 +20,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── Stage & background ── */
+  /* ── Fundo ── */
   .stage {
     position: relative;
     width: 100%;
@@ -28,102 +28,56 @@
     background: radial-gradient(ellipse at 50% 60%, #0c0e16 0%, #050608 55%, #000 100%);
     overflow: hidden;
   }
-
-  .bokeh {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  /* Layer 1 — blurred city buildings */
-  .city {
-    position: absolute;
-    inset: 0;
-    filter: blur(5px);
-    mix-blend-mode: screen;
-    opacity: 0.95;
-  }
-  .window {
-    position: absolute;
-    background: #ffcc78;
-    border-radius: 1px;
-  }
-
-  /* Layer 2 — large out-of-focus bokeh in foreground */
-  .dot {
-    position: absolute;
-    border-radius: 50%;
-    mix-blend-mode: screen;
-  }
-
-  /* Vignette — darken edges like the original show's aesthetic */
+  .bokeh  { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .city   { position: absolute; inset: 0; filter: blur(5px); mix-blend-mode: screen; opacity: 0.95; }
+  .window { position: absolute; background: #ffcc78; border-radius: 1px; }
+  .dot    { position: absolute; border-radius: 50%; mix-blend-mode: screen; }
   .vignette {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 75%, #000 100%);
   }
 
-  /* ── Layout — mobile-first ── */
+  /* ── Layout (3 colunas em qualquer tela) ── */
   .wrap {
     position: relative;
     z-index: 2;
     max-width: 1180px;
     margin: 0 auto;
-    padding: 24px 16px 60px;
+    padding: 16px 10px 40px;
   }
 
   .logo {
     font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     color: #f6e7b9;
-    font-size: clamp(52px, 18vw, 150px);
+    font-size: clamp(40px, 13vw, 150px);
     text-align: center;
     letter-spacing: -2px;
     line-height: 0.95;
-    text-shadow:
-      0 0 14px rgba(246,231,185,0.35),
-      0 0 32px rgba(246,231,185,0.18);
-    margin-bottom: 20px;
+    text-shadow: 0 0 14px rgba(246,231,185,0.35), 0 0 32px rgba(246,231,185,0.18);
+    margin-bottom: 12px;
     user-select: none;
   }
 
-  /* Mobile: single column, card first, then circles, then menu */
   .grid {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
+    display: grid;
+    grid-template-columns: 95px 1fr 62px;
+    gap: 8px;
+    align-items: start;
   }
 
-  /* ── Left menu ── */
-  .menu {
-    order: 3;
-    font-size: 14px;
-    line-height: 1.5;
-    letter-spacing: 0.2px;
-  }
+  /* ── Menu esquerda ── */
+  .menu { padding-top: 2px; font-size: 9px; line-height: 1.45; }
   .menu h2 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
-    font-size: 28px;
+    font-size: 17px;
     line-height: 1;
-    letter-spacing: -0.5px;
-    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+    margin-bottom: 2px;
   }
-  .menu p {
-    color: #c4c4c4;
-    margin-bottom: 22px;
-    font-size: 13px;
-  }
-  .menu a {
-    color: #29b6e6;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-  }
+  .menu p  { color: #c4c4c4; margin-bottom: 12px; font-size: 9px; }
+  .menu a  { color: #29b6e6; text-decoration: underline; font-weight: 700; }
 
   .c-welcome { color: #29b6e6; }
   .c-gossip  { color: #e26b30; }
@@ -131,181 +85,138 @@
   .c-parties { color: #c43a63; }
   .c-links   { color: #82b746; }
 
-  /* ── Central card ── */
-  .card-wrap {
-    order: 1;
-    display: flex;
-    justify-content: center;
-  }
+  /* ── Card central ── */
+  .card-wrap { display: flex; justify-content: center; padding-top: 2px; }
   .card {
     background: #f4f1e7;
     color: #222;
     width: 100%;
-    max-width: 420px;
-    padding: 14px;
-    box-shadow:
-      0 18px 60px rgba(0,0,0,0.55),
-      0 4px 14px rgba(0,0,0,0.4);
+    padding: 7px;
+    box-shadow: 0 14px 50px rgba(0,0,0,0.55), 0 3px 10px rgba(0,0,0,0.4);
     border-radius: 2px;
   }
   .card h3 {
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 9px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: #1a1a1a;
   }
 
-  /* Media slot — accepts video or img */
+  /* Slot de mídia */
   .photo {
     width: 100%;
     aspect-ratio: 1 / 1;
     background: #1a1a1a;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     overflow: hidden;
     position: relative;
+    cursor: zoom-in;
   }
-  .photo video,
-  .photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  .photo video, .photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .photo .placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: 'Quicksand', sans-serif;
-    background: repeating-linear-gradient(
-      45deg,
-      #1a1a1a,
-      #1a1a1a 8px,
-      #1f1f1f 8px,
-      #1f1f1f 16px
-    );
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #555; font-size: 8px; letter-spacing: 1px;
+    text-transform: uppercase; font-family: 'Quicksand', sans-serif;
+    background: repeating-linear-gradient(45deg,#1a1a1a,#1a1a1a 8px,#1f1f1f 8px,#1f1f1f 16px);
   }
+  /* Ícone de play sobre o card */
+  .photo .play-icon {
+    position: absolute; inset: 0; display: flex;
+    align-items: center; justify-content: center; pointer-events: none;
+  }
+  .photo .play-icon svg { width: 28px; height: 28px; opacity: 0.55; filter: drop-shadow(0 2px 4px #000); }
 
-  .card .body {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #2a2a2a;
-    text-align: left;
-  }
-  .card .sig {
-    color: #29b6e6;
-    font-weight: 700;
-    text-align: right;
-    margin-top: 8px;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-  }
+  .card .body { font-size: 8.5px; line-height: 1.5; color: #2a2a2a; }
+  .card .sig  { color: #29b6e6; font-weight: 700; text-align: right; margin-top: 4px; font-size: 8.5px; letter-spacing: 0.4px; }
 
-  /* ── Avatar circles ── */
-  .avatars {
-    order: 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+  /* ── Lightbox ── */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.93);
+    align-items: center; justify-content: center; padding: 16px;
   }
-  .avatar {
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
+  .lightbox.open { display: flex; }
+  .lightbox-inner {
+    position: relative; width: 100%; max-width: 600px; aspect-ratio: 1 / 1;
   }
+  .lightbox-inner video, .lightbox-inner img {
+    width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 2px;
+  }
+  .lightbox-close {
+    position: absolute; top: -40px; right: 0;
+    background: none; border: none; color: #fff;
+    font-size: 32px; cursor: pointer; line-height: 1; padding: 4px 8px; opacity: 0.75;
+  }
+  .lightbox-close:hover, .lightbox-close:active { opacity: 1; }
+
+  /* ── Círculos direita ── */
+  .avatars { display: flex; flex-direction: column; align-items: center; gap: 9px; padding-top: 2px; }
+  .avatar  { text-align: center; text-decoration: none; -webkit-tap-highlight-color: transparent; }
   .avatar .circle {
-    display: block;
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: #161616;
-    border: 1px solid rgba(255,255,255,0.08);
+    display: block; width: 50px; height: 50px; border-radius: 50%;
+    background: #161616; border: 1px solid rgba(255,255,255,0.08);
     overflow: hidden;
-    box-shadow:
-      0 0 0 1px rgba(0,0,0,0.6),
-      0 6px 18px rgba(0,0,0,0.6);
-    transition: transform 180ms ease, box-shadow 180ms ease;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.6);
+    transition: transform 180ms ease;
   }
-  .avatar:active .circle {
-    transform: scale(0.94);
-  }
-  .avatar .circle img,
-  .avatar .circle video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .avatar .label {
-    display: block;
-    color: #cfcfcf;
-    font-size: 12px;
-    margin-top: 5px;
-    letter-spacing: 0.3px;
-  }
+  .avatar:active .circle { transform: scale(0.92); }
+  .avatar .circle img, .avatar .circle video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .avatar .label { display: block; color: #cfcfcf; font-size: 9px; margin-top: 3px; }
 
-  /* ── Desktop layout (900px+) ── */
+  /* ── Desktop (900px+) ── */
   @media (min-width: 900px) {
-    .wrap {
-      padding: 32px 40px 80px;
-    }
-    .logo {
-      font-size: clamp(72px, 11vw, 150px);
-      letter-spacing: -3px;
-      margin-bottom: 24px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 200px 1fr 130px;
-      gap: 56px;
-      align-items: start;
-    }
-    .menu    { order: unset; font-size: 12px; }
-    .menu h2 { font-size: 32px; letter-spacing: -1px; }
+    .wrap  { padding: 32px 40px 80px; }
+    .logo  { font-size: clamp(72px, 11vw, 150px); letter-spacing: -3px; margin-bottom: 24px; }
+    .grid  { grid-template-columns: 200px 1fr 130px; gap: 56px; }
+    .menu  { font-size: 12px; }
+    .menu h2 { font-size: 32px; letter-spacing: -1px; margin-bottom: 4px; }
     .menu p  { font-size: 12px; margin-bottom: 28px; }
-    .card-wrap { order: unset; padding-top: 8px; }
-    .card { width: 300px; max-width: 300px; }
-    .card h3  { font-size: 14px; }
+    .card  { padding: 14px; }
+    .card h3   { font-size: 14px; margin-bottom: 9px; }
     .card .body { font-size: 11px; }
-    .avatars {
-      order: unset;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding-top: 8px;
-      gap: 14px;
-    }
+    .card .sig  { font-size: 11px; margin-top: 6px; }
+    .photo .placeholder { font-size: 11px; }
+    .photo .play-icon svg { width: 44px; height: 44px; }
+    .avatars { gap: 14px; }
+    .avatar .circle { width: 70px; height: 70px; }
+    .avatar .label  { font-size: 12px; margin-top: 4px; }
     .avatar:hover .circle {
       transform: scale(1.06);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.18),
-        0 8px 24px rgba(0,0,0,0.7);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 8px 24px rgba(0,0,0,0.7);
     }
   }
 </style>
 </head>
 <body>
+
+<!-- Lightbox de zoom -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lb-close" aria-label="Fechar">&#x2715;</button>
+    <video id="lb-video" autoplay loop muted playsinline style="display:none"></video>
+    <img   id="lb-img"   src="" alt=""          style="display:none" />
+    <div id="lb-placeholder" style="
+      width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+      color:#555;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-family:Quicksand,sans-serif;
+      background:repeating-linear-gradient(45deg,#1a1a1a,#1a1a1a 8px,#1f1f1f 8px,#1f1f1f 16px);
+      border-radius:2px;">seu vídeo aqui</div>
+  </div>
+</div>
+
 <div class="stage">
-  <!-- Generated bokeh background -->
   <div class="bokeh" id="bokeh"></div>
   <div class="vignette"></div>
 
   <div class="wrap">
-
     <div class="logo">gossip girl</div>
 
     <div class="grid">
 
-      <!-- Left nav -->
+      <!-- Menu esquerda -->
       <nav class="menu">
         <h2 class="c-welcome">welcome</h2>
         <p>to Gossip Girl!<br>
@@ -333,22 +244,27 @@
         <h2 class="c-links">links</h2>
       </nav>
 
-      <!-- Central card -->
+      <!-- Card central -->
       <div class="card-wrap">
         <article class="card">
           <h3>From Trash to Cash</h3>
 
           <!--
-            ── VIDEO / PHOTO ──────────────────────────────────────
-            To add your video, uncomment the <source> line below
-            and set the correct file path. Or replace the whole
-            <video> element with <img src="your-photo.jpg" alt="" />.
+            TROQUE O VÍDEO: descomente a linha <source> abaixo
+            e coloque o caminho do seu arquivo.
+            Ou substitua o <video> por <img src="sua-foto.jpg" />
           -->
-          <div class="photo">
-            <video autoplay loop muted playsinline>
+          <div class="photo" id="photo-thumb">
+            <video autoplay loop muted playsinline id="thumb-video">
               <!-- <source src="seu-video.mp4" type="video/mp4" /> -->
             </video>
             <div class="placeholder">seu vídeo aqui</div>
+            <div class="play-icon">
+              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" fill="none" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <polygon points="10,8 17,12 10,16" fill="white"/>
+              </svg>
+            </div>
           </div>
 
           <p class="body">
@@ -362,30 +278,22 @@
         </article>
       </div>
 
-      <!-- Right avatar circles -->
+      <!-- Círculos direita -->
       <aside class="avatars">
         <a class="avatar" href="#">
-          <span class="circle">
-            <!-- <img src="home.jpg" alt="home" /> -->
-          </span>
+          <span class="circle"><!-- <img src="home.jpg" alt="home" /> --></span>
           <span class="label">home</span>
         </a>
         <a class="avatar" href="#">
-          <span class="circle">
-            <!-- <img src="posts.jpg" alt="posts" /> -->
-          </span>
+          <span class="circle"><!-- <img src="posts.jpg" alt="posts" /> --></span>
           <span class="label">posts</span>
         </a>
         <a class="avatar" href="#">
-          <span class="circle">
-            <!-- <img src="pics.jpg" alt="pics" /> -->
-          </span>
+          <span class="circle"><!-- <img src="pics.jpg" alt="pics" /> --></span>
           <span class="label">pics</span>
         </a>
         <a class="avatar" href="#">
-          <span class="circle">
-            <!-- <img src="links.jpg" alt="links" /> -->
-          </span>
+          <span class="circle"><!-- <img src="links.jpg" alt="links" /> --></span>
           <span class="label">links</span>
         </a>
       </aside>
@@ -396,103 +304,116 @@
 
 <script>
 (function () {
+  /* ── Fundo: cidade bokeh ── */
   const bokeh = document.getElementById('bokeh');
-
-  // ── Layer 1: blurred city buildings ──────────────────────────
-  const city = document.createElement('div');
+  const city  = document.createElement('div');
   city.className = 'city';
   bokeh.appendChild(city);
 
   const warm = ['#ffd28a','#ffba6b','#ffe2a5','#ffc97a','#ff9d52','#ffae66'];
   const cool = ['#7ec8ff','#a8dcff','#bfc8ff'];
 
-  // Vertical building columns with window rows
-  const cols = 26;
-  for (let c = 0; c < cols; c++) {
-    const xPct     = (c / cols) * 100 + (Math.random() - 0.5) * 3.5;
-    const wPct     = 1.4 + Math.random() * 3.2;
-    const topPct   = 18  + Math.random() * 35;
-    const winPerRow = 1  + Math.floor(Math.random() * 3);
-    const rowGap   = 1.8 + Math.random() * 1.2;
-    const rowCount = Math.floor((100 - topPct) / rowGap);
-
-    for (let r = 0; r < rowCount; r++) {
+  for (let c = 0; c < 26; c++) {
+    const xPct = (c / 26) * 100 + (Math.random() - 0.5) * 3.5;
+    const wPct = 1.4 + Math.random() * 3.2;
+    const topPct = 18 + Math.random() * 35;
+    const wpr = 1 + Math.floor(Math.random() * 3);
+    const rowGap = 1.8 + Math.random() * 1.2;
+    const rows = Math.floor((100 - topPct) / rowGap);
+    for (let r = 0; r < rows; r++) {
       const density = 0.45 + Math.random() * 0.45;
-      for (let w = 0; w < winPerRow; w++) {
+      for (let w = 0; w < wpr; w++) {
         if (Math.random() > density) continue;
-        const win = document.createElement('div');
-        win.className = 'window';
-        const wW = (wPct / winPerRow) * (0.45 + Math.random() * 0.35);
-        const wH = 0.7 + Math.random() * 0.9;
-        win.style.left   = (xPct + (w / winPerRow) * wPct + (wPct / winPerRow - wW) / 2) + '%';
-        win.style.top    = (topPct + r * rowGap) + '%';
-        win.style.width  = wW + '%';
-        win.style.height = wH + '%';
-        win.style.background = Math.random() < 0.88
-          ? warm[Math.floor(Math.random() * warm.length)]
-          : cool[Math.floor(Math.random() * cool.length)];
-        win.style.opacity = 0.55 + Math.random() * 0.45;
-        city.appendChild(win);
+        const el = document.createElement('div');
+        el.className = 'window';
+        const wW = (wPct / wpr) * (0.45 + Math.random() * 0.35);
+        el.style.left   = (xPct + (w / wpr) * wPct + (wPct / wpr - wW) / 2) + '%';
+        el.style.top    = (topPct + r * rowGap) + '%';
+        el.style.width  = wW + '%';
+        el.style.height = (0.7 + Math.random() * 0.9) + '%';
+        el.style.background = Math.random() < 0.88 ? warm[Math.floor(Math.random() * warm.length)] : cool[Math.floor(Math.random() * cool.length)];
+        el.style.opacity = 0.55 + Math.random() * 0.45;
+        city.appendChild(el);
       }
     }
   }
-
-  // Scattered distant lights
   for (let i = 0; i < 80; i++) {
-    const win = document.createElement('div');
-    win.className = 'window';
-    win.style.left   = Math.random() * 100 + '%';
-    win.style.top    = (20 + Math.random() * 75) + '%';
-    win.style.width  = (0.15 + Math.random() * 0.35) + '%';
-    win.style.height = (0.3  + Math.random() * 0.6)  + '%';
-    win.style.background = Math.random() < 0.85
-      ? warm[Math.floor(Math.random() * warm.length)]
-      : cool[Math.floor(Math.random() * cool.length)];
-    win.style.opacity = 0.5 + Math.random() * 0.5;
-    city.appendChild(win);
+    const el = document.createElement('div');
+    el.className = 'window';
+    el.style.left = Math.random() * 100 + '%';
+    el.style.top  = (20 + Math.random() * 75) + '%';
+    el.style.width  = (0.15 + Math.random() * 0.35) + '%';
+    el.style.height = (0.3  + Math.random() * 0.6)  + '%';
+    el.style.background = Math.random() < 0.85 ? warm[Math.floor(Math.random() * warm.length)] : cool[Math.floor(Math.random() * cool.length)];
+    el.style.opacity = 0.5 + Math.random() * 0.5;
+    city.appendChild(el);
   }
 
-  // ── Layer 2: large out-of-focus foreground bokeh ──────────────
-  const palette = [
-    '#fff4c2','#ffd98a','#ffb478','#ff8a55',
-    '#9dd6ff','#5aa6ff','#c79bff','#ffffff'
-  ];
-
+  const palette = ['#fff4c2','#ffd98a','#ffb478','#ff8a55','#9dd6ff','#5aa6ff','#c79bff','#ffffff'];
   for (let i = 0; i < 14; i++) {
-    const d = document.createElement('div');
-    d.className = 'dot';
-    const size = 110 + Math.random() * 220;
-    d.style.width   = size + 'px';
-    d.style.height  = size + 'px';
-    d.style.left    = (Math.random() * 110 - 5) + '%';
-    d.style.top     = (Math.random() * 110 - 5) + '%';
-    d.style.background = palette[Math.floor(Math.random() * palette.length)];
-    d.style.filter  = 'blur(' + (35 + Math.random() * 45) + 'px)';
-    d.style.opacity = 0.18 + Math.random() * 0.22;
+    const d = document.createElement('div'); d.className = 'dot';
+    const s = 110 + Math.random() * 220;
+    d.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*110-5}%;top:${Math.random()*110-5}%;background:${palette[Math.floor(Math.random()*palette.length)]};filter:blur(${35+Math.random()*45}px);opacity:${0.18+Math.random()*0.22}`;
     bokeh.appendChild(d);
   }
-
-  // Medium bokeh fill
   for (let i = 0; i < 30; i++) {
-    const d = document.createElement('div');
-    d.className = 'dot';
-    const size = 30 + Math.random() * 70;
-    d.style.width   = size + 'px';
-    d.style.height  = size + 'px';
-    d.style.left    = Math.random() * 100 + '%';
-    d.style.top     = Math.random() * 100 + '%';
-    d.style.background = palette[Math.floor(Math.random() * palette.length)];
-    d.style.filter  = 'blur(' + (15 + Math.random() * 20) + 'px)';
-    d.style.opacity = 0.25 + Math.random() * 0.35;
+    const d = document.createElement('div'); d.className = 'dot';
+    const s = 30 + Math.random() * 70;
+    d.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;top:${Math.random()*100}%;background:${palette[Math.floor(Math.random()*palette.length)]};filter:blur(${15+Math.random()*20}px);opacity:${0.25+Math.random()*0.35}`;
     bokeh.appendChild(d);
   }
 
-  // Hide placeholder as soon as a video has data
-  document.querySelectorAll('.photo video').forEach(function (v) {
-    const ph = v.parentElement.querySelector('.placeholder');
-    v.addEventListener('loadeddata', function () { ph && ph.remove(); });
-    if (v.querySelector('source[src]')) ph && ph.remove();
+  /* ── Lightbox ── */
+  const lightbox   = document.getElementById('lightbox');
+  const lbClose    = document.getElementById('lb-close');
+  const lbVideo    = document.getElementById('lb-video');
+  const lbImg      = document.getElementById('lb-img');
+  const lbPh       = document.getElementById('lb-placeholder');
+  const thumb      = document.getElementById('photo-thumb');
+  const thumbVideo = document.getElementById('thumb-video');
+
+  function openLightbox() {
+    const thumbImg = thumb.querySelector('img');
+    const src = thumbVideo.querySelector('source[src]');
+
+    lbVideo.style.display = 'none';
+    lbImg.style.display   = 'none';
+    lbPh.style.display    = 'none';
+
+    if (src) {
+      lbVideo.innerHTML = `<source src="${src.getAttribute('src')}" type="${src.getAttribute('type') || 'video/mp4'}">`;
+      lbVideo.style.display = 'block';
+      lbVideo.load(); lbVideo.play();
+    } else if (thumbImg) {
+      lbImg.src = thumbImg.src;
+      lbImg.style.display = 'block';
+    } else {
+      lbPh.style.display = 'flex';
+    }
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lbVideo.pause();
+    document.body.style.overflow = '';
+  }
+
+  thumb.addEventListener('click', openLightbox);
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+
+  /* Esconde placeholder do thumb quando o vídeo carrega */
+  thumbVideo.addEventListener('loadeddata', function () {
+    const ph = thumb.querySelector('.placeholder');
+    if (ph) ph.remove();
   });
+  if (thumbVideo.querySelector('source[src]')) {
+    const ph = thumb.querySelector('.placeholder');
+    if (ph) ph.remove();
+  }
 })();
 </script>
 </body>
