@@ -86,7 +86,7 @@
   .c-links   { color: #82b746; }
 
   /* ── Card central ── */
-  .card-wrap { display: flex; justify-content: center; padding-top: 4px; }
+  .card-wrap { display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
   .card {
     background: #f4f1e7;
     color: #222;
@@ -102,6 +102,22 @@
     margin-bottom: 7px;
     color: #1a1a1a;
   }
+
+  /* Foto menor nos posts secundários */
+  .post-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #1a1a1a;
+    margin-bottom: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .post-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .post-photo .ph {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .post-photo .ph svg { width: 100%; height: 100%; }
 
   /* Slot de mídia */
   .photo {
@@ -292,6 +308,126 @@
           </p>
           <p class="sig">xo xo GOSSIP GIRL</p>
         </article>
+
+        <!-- Post 1 -->
+        <article class="card">
+          <h3>Paz no Upper East</h3>
+          <div class="post-photo">
+            <div class="ph">
+              <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="pp1" cx="50%" cy="40%" r="70%">
+                    <stop offset="0%" stop-color="#3a2a4a"/>
+                    <stop offset="100%" stop-color="#0d0a14"/>
+                  </radialGradient>
+                </defs>
+                <rect width="320" height="240" fill="url(#pp1)"/>
+                <rect x="0" y="155" width="55" height="85" fill="#0a0812"/>
+                <rect x="50" y="120" width="70" height="120" fill="#0a0812"/>
+                <rect x="115" y="135" width="90" height="105" fill="#0a0812"/>
+                <rect x="200" y="110" width="60" height="130" fill="#0a0812"/>
+                <rect x="255" y="140" width="65" height="100" fill="#0a0812"/>
+                <g fill="#f0a840" opacity="0.6">
+                  <rect x="58" y="128" width="5" height="7"/><rect x="68" y="128" width="5" height="7"/>
+                  <rect x="58" y="142" width="5" height="7"/><rect x="78" y="142" width="5" height="7"/>
+                  <rect x="122" y="142" width="5" height="7"/><rect x="135" y="142" width="5" height="7"/>
+                  <rect x="148" y="155" width="5" height="7"/><rect x="122" y="162" width="5" height="7"/>
+                  <rect x="208" y="118" width="5" height="7"/><rect x="220" y="128" width="5" height="7"/>
+                  <rect x="208" y="142" width="5" height="7"/><rect x="232" y="118" width="5" height="7"/>
+                  <rect x="263" y="148" width="5" height="7"/><rect x="275" y="155" width="5" height="7"/>
+                </g>
+                <text x="160" y="100" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="28" fill="white" opacity="0.25">B &amp; C</text>
+              </svg>
+            </div>
+          </div>
+          <p class="body">
+            As ruas de Nova York estão oficialmente seguras agora que a guerra entre
+            Blair e Chuck acabou. Ufa! No entanto, os dois deram bastante trabalho e
+            provaram pra todo mundo que são forças com as quais se contar. Agora,
+            tomara que consigam manter a paz. Porque conhecendo esses dois, seus
+            arsenais estão sempre abastecidos.
+          </p>
+          <p class="sig">xo xo GOSSIP GIRL</p>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="card">
+          <h3>Serena está de Volta!</h3>
+          <div class="post-photo">
+            <div class="ph">
+              <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="pp2" cx="50%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#4a3820"/>
+                    <stop offset="60%" stop-color="#1a1008"/>
+                    <stop offset="100%" stop-color="#050300"/>
+                  </radialGradient>
+                </defs>
+                <rect width="320" height="240" fill="url(#pp2)"/>
+                <!-- silhueta feminina estilizada -->
+                <ellipse cx="160" cy="90" rx="38" ry="45" fill="#1c1208"/>
+                <rect x="128" y="130" width="64" height="90" rx="8" fill="#1c1208"/>
+                <!-- detalhe cabelo/luz -->
+                <ellipse cx="148" cy="72" rx="18" ry="22" fill="#2a1c0a" opacity="0.8"/>
+                <ellipse cx="160" cy="68" rx="10" ry="12" fill="#c8a060" opacity="0.15"/>
+                <text x="160" y="210" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="14" fill="#f0c870" opacity="0.5">Spotted: Grand Central</text>
+              </svg>
+            </div>
+          </div>
+          <p class="body">
+            Oi, moradores do Upper East Side! Gossip Girl aqui, com a maior novidade
+            de todas. Uma das minhas fontes, Melanie91, nos manda isso: flagrada na
+            Grand Central, malas na mão &mdash; Serena van der Woodsen. Faz só um
+            ano que nossa It-Girl sumiu misteriosamente para um tal &ldquo;internato&rdquo;.
+            E de repente ela aparece de volta. Não acredita? Veja com seus próprios
+            olhos. Por sorte, Melanie91 mandou a prova. Obrigada pela foto, Me!
+          </p>
+          <p class="sig">xo xo GOSSIP GIRL</p>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="card">
+          <h3>Dois Ingressos, Por Favor?</h3>
+          <div class="post-photo">
+            <div class="ph">
+              <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="pp3" cx="50%" cy="40%" r="68%">
+                    <stop offset="0%" stop-color="#1a1030"/>
+                    <stop offset="100%" stop-color="#05030f"/>
+                  </radialGradient>
+                </defs>
+                <rect width="320" height="240" fill="url(#pp3)"/>
+                <!-- tela de cinema -->
+                <rect x="60" y="30" width="200" height="120" rx="2" fill="#1e1535"/>
+                <rect x="65" y="35" width="190" height="110" rx="1" fill="#0a0818" opacity="0.8"/>
+                <text x="160" y="100" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="18" fill="#8060c0" opacity="0.4">Film Forum</text>
+                <!-- fileiras de assentos -->
+                <g fill="#2a2040" opacity="0.9">
+                  <rect x="30" y="165" width="260" height="12" rx="2"/>
+                  <rect x="30" y="183" width="260" height="12" rx="2"/>
+                  <rect x="30" y="201" width="260" height="12" rx="2"/>
+                  <rect x="30" y="219" width="260" height="12" rx="2"/>
+                </g>
+                <!-- dois pontos iluminados (Blair e Dan) -->
+                <circle cx="140" cy="170" r="4" fill="#f6e7b9" opacity="0.7"/>
+                <circle cx="175" cy="170" r="4" fill="#f6e7b9" opacity="0.7"/>
+              </svg>
+            </div>
+          </div>
+          <p class="body">
+            Recebi algumas dicas sobre Blair assistindo a um filme no Film Forum com,
+            prepare-se&hellip; Dan Humphrey. Tudo bem, eles estavam em fileiras
+            separadas, mas ainda assim é bem estranho. Pode ser só coincidência.
+            Afinal, quem não ama documentários sobre orangotangos franceses?
+            Mas não consigo deixar de pensar: será que Dan e Blair planejaram ir
+            juntos? Não acho que tenha nada de rom&acirc;ntico entre eles (imagina
+            o horror!), mas só a ideia de Dan e Blair como amigos já é demais.
+            O que Blair está pensando?!
+          </p>
+          <p class="sig">xo xo GOSSIP GIRL</p>
+        </article>
+
       </div>
 
       <!-- Círculos direita -->
