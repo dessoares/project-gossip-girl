@@ -196,9 +196,31 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
-    padding: 52px 8px 24px;
+    padding: 16px 8px 24px;
     max-width: 960px;
     margin: 0 auto;
+  }
+  .gallery-header {
+    text-align: center;
+    padding: 52px 16px 8px;
+  }
+  .gallery-header .modal-logo {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: clamp(28px, 8vw, 52px);
+    color: rgba(246,231,185,0.18);
+    letter-spacing: -1px;
+    line-height: 1;
+    display: block;
+  }
+  .gallery-header .modal-section {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    color: #a35ba2;
+    font-size: clamp(28px, 8vw, 52px);
+    letter-spacing: -1px;
+    text-shadow: 0 0 18px rgba(163,91,162,0.4);
+    display: block;
   }
   .gallery-thumb {
     aspect-ratio: 1 / 1; overflow: hidden; cursor: pointer;
@@ -340,6 +362,10 @@
 <!-- Galeria de fotos -->
 <div class="gallery-modal" id="gallery-modal">
   <button class="gallery-close" id="gallery-close">&#x2715;</button>
+  <div class="gallery-header">
+    <span class="modal-logo">gossip girl</span>
+    <span class="modal-section">pics</span>
+  </div>
   <div class="gallery-grid" id="gallery-grid">
     <div class="gallery-thumb" data-index="0"><img src="gallery-01.jpeg" alt="foto 1"></div>
     <div class="gallery-thumb" data-index="1"><img src="gallery-02.jpeg" alt="foto 2"></div>
@@ -506,7 +532,10 @@
 <div class="parties-modal" id="parties-modal">
   <button class="parties-close" id="parties-close">&#x2715;</button>
   <div class="parties-modal-inner">
-    <div class="parties-modal-title">parties</div>
+    <div class="gallery-header" style="padding-top:52px;padding-bottom:0">
+      <span class="modal-logo">gossip girl</span>
+      <span class="modal-section" style="color:#c43a63;text-shadow:0 0 18px rgba(196,58,99,0.4)">parties</span>
+    </div>
 
     <article class="card">
       <h3>Dois Ingressos. Uma Cadeira Vazia.</h3>
