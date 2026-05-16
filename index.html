@@ -106,18 +106,11 @@
   /* Foto menor nos posts secundários */
   .post-photo {
     width: 100%;
-    aspect-ratio: 4 / 3;
     background: #1a1a1a;
     margin-bottom: 8px;
     overflow: hidden;
-    position: relative;
   }
-  .post-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .post-photo .ph {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .post-photo .ph svg { width: 100%; height: 100%; }
+  .post-photo img { width: 100%; height: auto; display: block; }
 
   /* Slot de mídia */
   .photo {
