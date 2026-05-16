@@ -201,6 +201,16 @@
     display: flex; align-items: center; justify-content: center;
   }
 
+  /* Avatares flutuantes quando galeria está aberta */
+  body.gallery-open .avatars {
+    position: fixed;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+    gap: 14px;
+  }
+
   /* ── Lightbox: iframe em tela cheia real ── */
   .lightbox {
     display: none;
@@ -446,7 +456,7 @@
 
       <!-- Círculos direita -->
       <aside class="avatars">
-        <a class="avatar" href="#">
+        <a class="avatar" href="index.html">
           <span class="circle">
             <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <polyline points="3,11 12,3 21,11"/>
@@ -455,7 +465,7 @@
           </span>
           <span class="label">home</span>
         </a>
-        <a class="avatar" href="#">
+        <a class="avatar" href="index.html">
           <span class="circle">
             <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <rect x="7" y="2" width="13" height="20" rx="1.5"/>
@@ -589,11 +599,13 @@
   function openGallery(e) {
     e.preventDefault();
     galleryModal.classList.add('open');
+    document.body.classList.add('gallery-open');
     document.body.style.overflow = 'hidden';
   }
   function closeGallery() {
     galleryModal.classList.remove('open');
     galleryViewer.classList.remove('open');
+    document.body.classList.remove('gallery-open');
     document.body.style.overflow = '';
   }
   function showViewer(idx) {
