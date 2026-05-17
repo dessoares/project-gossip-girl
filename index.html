@@ -351,6 +351,7 @@
     transition: opacity 200ms, transform 200ms;
   }
   body.modal-open .avatars { opacity: 1; pointer-events: auto; }
+  body.video-open .avatars { opacity: 0; pointer-events: none; transform: translateY(20px); }
 
   /* ── Desktop (900px+) ── */
   @media (min-width: 900px) {
@@ -865,6 +866,7 @@
 
   document.getElementById('photo-thumb').addEventListener('click', function () {
     lightbox.classList.add('open');
+    document.body.classList.add('video-open');
     document.body.style.overflow = 'hidden';
     if (ytReady && ytPlayer) {
       ytPlayer.loadVideoById({ videoId: VIDEO_ID, suggestedQuality: 'hd1080' });
@@ -873,6 +875,7 @@
 
   function closeLightbox() {
     lightbox.classList.remove('open');
+    document.body.classList.remove('video-open');
     document.body.style.overflow = '';
     if (ytPlayer) ytPlayer.stopVideo();
   }
